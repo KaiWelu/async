@@ -1,0 +1,37 @@
+html {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+}
+
+#app {
+  margin: 0;
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+header {
+  background-color: crimson;
+}
+
+main {
+  background-color: aqua;
+  position: relative;
+}
+
+#mole {
+  all: unset;
+  position: absolute;
+  background-color: white;
+  border: solid black 2px;
+  border-radius: 50%;
+  _padding: 0.5rem;
+}
+
+#mole:hover {
+  background-color: blue;
+}
