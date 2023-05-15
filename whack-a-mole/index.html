@@ -12,11 +12,12 @@
 <body>
     <div id="app">
         <header>
-            <div>Time: {{seconds}}</div>
-            <div>Points: {{points}}</div>
-            <button @click="startGame()">Start Game</button>
+            <div class="nav-element">Time: {{seconds}}</div>
+            <div class="nav-element">Points: {{points}}</div>
+            <button class="nav-element" @click="startGame()">Start Game</button>
         </header>
-        <main><button id="mole" @click="whack()" :style="position"><img src="mole.png" alt="Mole"></button></main>
+        <main><button id="mole" @click="whack()" :style="position" v-if="isActive"><img src="mole.png"
+                    alt="Mole"></button></main>
     </div>
 
     <script src=" https://unpkg.com/vue@3/dist/vue.global.js">

@@ -5,6 +5,7 @@ Vue.createApp({
       points: 0,
       top: "",
       left: "",
+      hasMoved: false,
     };
   },
   computed: {
@@ -14,9 +15,6 @@ Vue.createApp({
       } else {
         return true;
       }
-    },
-    randomDistance() {
-      return this.getRandomIntInclusive(1, 95);
     },
     position() {
       return {
@@ -32,16 +30,21 @@ Vue.createApp({
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
     startGame() {
-      this.seconds = 5;
-      this.points = 0;
-      const decrement = setInterval(() => {
-        if (this.isActive) {
-          this.seconds--;
-          this.changePosition();
-        } else {
-          clearInterval(decrement);
-        }
-      }, 1000);
+      if (this.isActive === false) {
+        this.seconds = 15;
+        this.points = 0;
+        const decrement = setInterval(() => {
+          if (this.isActive && !this.hasMoved) {
+            this.seconds--;
+            this.changePosition();
+          } else if (this.isActive && this.hasMoved) {
+            this.seconds--;
+            this.hasMoved = false;
+          } else {
+            clearInterval(decrement);
+          }
+        }, 1000);
+      }
     },
     whack() {
       if (this.isActive) {
@@ -50,8 +53,9 @@ Vue.createApp({
       }
     },
     changePosition() {
-      (this.top = this.getRandomIntInclusive(1, 80).toString() + "%"),
-        (this.left = this.getRandomIntInclusive(1, 80).toString() + "%");
+      this.top = this.getRandomIntInclusive(1, 90).toString() + "%";
+      this.left = this.getRandomIntInclusive(1, 90).toString() + "%";
+      this.hasMoved = true;
     },
   },
 }).mount("#app");
