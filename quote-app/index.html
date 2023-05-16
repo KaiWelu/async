@@ -6,17 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quote App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital@1&family=Caveat:wght@500&family=Dosis&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div id="app">
         <header>
-            <h1>Quote App</h1> <button>Get Quote</button>
+            <h1>Quote App</h1> <button @click="getQuote()">Get Quote</button>
         </header>
         <main>
-            <div>{{quote}}</div>
-            <div>{{author}}</div>
+            <div id="quote">{{quote}}</div>
+            <div id="author">- {{author}}</div>
         </main>
     </div>
 
